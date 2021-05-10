@@ -1,0 +1,439 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="handler"
+            type="com.aaamab.bonappetit.ui.register.RegisterScreen.RegisterHandler" />
+    </data>
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FFFFFF"
+        tools:context=".ui.register.RegisterScreen"
+        >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_centerInParent="true"
+                android:layout_height="match_parent">
+
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="65dp"
+                    android:background="@drawable/toolbar_style"
+                    android:minHeight="?attr/actionBarSize"
+                    android:theme="?attr/actionBarTheme"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/back_image"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginStart="16dp"
+                    android:onClick="@{handler::onBack}"
+                    app:layout_constraintBottom_toBottomOf="@+id/toolbar"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.457"
+                    app:srcCompat="@drawable/back_vector" />
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/hn_bold"
+                    android:text="@string/sign_up"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/toolbar"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.432"
+                    app:layout_constraintStart_toEndOf="@+id/back_image"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.463" />
+
+                <ImageView
+                    android:id="@+id/imageView3"
+                    android:layout_width="300dp"
+                    android:layout_height="230dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/toolbar"
+                    app:srcCompat="@drawable/splash_logo" />
+
+                <RelativeLayout
+                    android:id="@+id/lin_username"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginEnd="15dp"
+                    android:background="@drawable/ed_style"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/imageView3">
+
+                    <LinearLayout
+                        android:id="@+id/icon_username"
+                        android:layout_width="60dp"
+                        android:layout_height="50dp"
+                        android:layout_alignParentStart="true"
+                        android:background="@drawable/shape_rounded"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <ImageView
+
+                            android:layout_width="45dp"
+                            android:layout_height="45dp"
+                            android:src="@drawable/username_normal" />
+                    </LinearLayout>
+
+                    <EditText
+                        android:id="@+id/ed_username"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_toEndOf="@+id/icon_username"
+                        android:backgroundTint="#FFFFFF"
+                        android:hint="@string/username"
+                        android:inputType="textPersonName"
+                        android:paddingStart="29dp"
+                        android:paddingEnd="15dp"
+                        android:textColorHint="#707070"
+                        android:textSize="16dp"
+                        android:fontFamily="@font/medium" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/lin_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="13dp"
+                    android:layout_marginEnd="15dp"
+                    android:background="@drawable/ed_style"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/lin_username">
+
+                    <LinearLayout
+                        android:id="@+id/icon_email"
+                        android:layout_width="60dp"
+                        android:layout_height="50dp"
+                        android:layout_alignParentStart="true"
+                        android:background="@drawable/shape_rounded"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <ImageView
+
+                            android:layout_width="45dp"
+                            android:layout_height="45dp"
+                            android:src="@drawable/mail" />
+                    </LinearLayout>
+
+                    <EditText
+                        android:id="@+id/ed_email"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_toEndOf="@+id/icon_email"
+                        android:backgroundTint="#FFFFFF"
+                        android:hint="@string/email_address"
+                        android:inputType="textEmailAddress"
+                        android:paddingStart="29dp"
+                        android:paddingEnd="15dp"
+                        android:textColorHint="#707070"
+                        android:textSize="16dp"
+                        android:fontFamily="@font/medium" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/lin_phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="13dp"
+                    android:layout_marginEnd="15dp"
+                    android:background="@drawable/ed_style"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/lin_email">
+
+                    <LinearLayout
+                        android:id="@+id/icon_phone"
+                        android:layout_width="60dp"
+                        android:layout_height="50dp"
+                        android:layout_alignParentStart="true"
+                        android:background="@drawable/shape_rounded"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <ImageView
+
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:src="@drawable/phone_24" />
+                    </LinearLayout>
+
+                    <EditText
+                        android:id="@+id/ed_phone"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_toEndOf="@+id/icon_phone"
+                        android:backgroundTint="#FFFFFF"
+                        android:hint="@string/phone_number"
+                        android:inputType="phone"
+                        android:paddingStart="29dp"
+                        android:paddingEnd="15dp"
+                        android:textColorHint="#707070"
+                        android:textSize="16dp"
+                        android:fontFamily="@font/medium" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/lin_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="13dp"
+                    android:layout_marginEnd="15dp"
+                    android:background="@drawable/ed_style"
+                    android:orientation="horizontal"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/lin_phone">
+
+                    <LinearLayout
+                        android:id="@+id/icon_address"
+                        android:layout_width="60dp"
+                        android:layout_height="50dp"
+                        android:layout_alignParentStart="true"
+                        android:background="#EFE8E8"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <ImageView
+
+                            android:layout_width="45dp"
+                            android:layout_height="45dp"
+                            android:src="@drawable/ic_baseline_location_on_24" />
+                    </LinearLayout>
+
+                    <EditText
+                        android:id="@+id/ed_address"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_toEndOf="@+id/icon_address"
+                        android:backgroundTint="#FFFFFF"
+                        android:hint="Phone Number"
+                        android:inputType="phone"
+                        android:paddingStart="15dp"
+                        android:paddingEnd="15dp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/lin_gender"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="13dp"
+                    android:layout_marginEnd="15dp"
+                    android:background="@drawable/ed_style"
+                    android:orientation="horizontal"
+                    android:visibility="visible"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/lin_address">
+
+                    <LinearLayout
+                        android:id="@+id/icon_gender"
+                        android:layout_width="60dp"
+                        android:layout_height="50dp"
+                        android:layout_alignParentStart="true"
+                        android:background="@drawable/shape_rounded"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <ImageView
+
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:src="@drawable/gender_regis" />
+                    </LinearLayout>
+
+                    <EditText
+                        android:id="@+id/ed_gender"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_toEndOf="@+id/icon_gender"
+                        android:backgroundTint="#FFFFFF"
+                        android:hint="@string/gender"
+                        android:focusable="false"
+                        android:onClick="@{handler::gender}"
+                        android:textColorHint="#707070"
+                        android:textSize="16dp"
+                        android:drawableEnd="@drawable/ic_arrow_drop_down_black_24dp"
+                        android:fontFamily="@font/medium"
+                        android:inputType="text"
+                        android:paddingStart="29dp"
+                        android:paddingEnd="15dp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/lin_pass"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="13dp"
+                    android:layout_marginEnd="15dp"
+                    android:background="@drawable/ed_style"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/lin_gender">
+
+                    <LinearLayout
+                        android:id="@+id/icon_pass"
+                        android:layout_width="60dp"
+                        android:layout_height="50dp"
+                        android:layout_alignParentStart="true"
+                        android:background="@drawable/shape_rounded"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:src="@drawable/lock_pass" />
+                    </LinearLayout>
+
+                    <EditText
+                        android:id="@+id/ed_pass"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_toEndOf="@+id/icon_pass"
+                        android:backgroundTint="#FFFFFF"
+                        android:hint="@string/password"
+                        android:inputType="textPassword"
+                        android:paddingStart="29dp"
+                        android:paddingEnd="15dp"
+                        android:textColorHint="#707070"
+                        android:textSize="16dp"
+                        android:fontFamily="@font/medium" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/lin_passConfirm"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="13dp"
+                    android:layout_marginEnd="15dp"
+                    android:background="@drawable/ed_style"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/lin_pass">
+
+                    <LinearLayout
+                        android:id="@+id/icon_passConfirm"
+                        android:layout_width="60dp"
+                        android:layout_height="50dp"
+                        android:layout_alignParentStart="true"
+                        android:background="@drawable/shape_rounded"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:src="@drawable/lock_pass" />
+                    </LinearLayout>
+
+                    <EditText
+                        android:id="@+id/ed_passConfirm"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_toEndOf="@+id/icon_passConfirm"
+                        android:backgroundTint="#FFFFFF"
+                        android:hint="@string/confirm_password"
+                        android:inputType="textPassword"
+                        android:paddingStart="29dp"
+                        android:paddingEnd="15dp"
+                        android:textColorHint="#707070"
+                        android:textSize="16dp"
+                        android:fontFamily="@font/medium" />
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:id="@+id/lin_terms"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/lin_passConfirm">
+
+                    <CheckBox
+                        android:id="@+id/check_terms"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/i_read_and_agree_to"
+                        android:textSize="11dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/txt_terms"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:onClick="@{handler::terms}"
+                        android:text="@string/terms_and_conditions"
+                        android:textColor="#42A6F6"
+                        android:textSize="11dp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/btn_register"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="50dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/btns_style"
+                    android:onClick="@{handler::submit}"
+                    android:text="@string/sign_up"
+                    android:textAllCaps="false"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18dp"
+                    android:fontFamily="@font/hn_bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/lin_terms"
+                    app:layout_constraintVertical_bias="0.0" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </RelativeLayout>
+    </androidx.core.widget.NestedScrollView>
+
+
+</layout>

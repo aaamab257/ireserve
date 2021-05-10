@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="handler"
+            type="com.aaamab.bonappetit.ui.main.MainScreen.MainHandler" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.main.MainScreen">
+
+        <FrameLayout
+            android:id="@+id/fragment_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/lin_bottom"
+
+            />
+
+        <LinearLayout
+            android:id="@+id/lin_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_alignParentBottom="true"
+            android:background="#F3F1F1"
+            android:layoutDirection="locale"
+            android:orientation="horizontal"
+            android:weightSum="5">
+
+            <LinearLayout
+                android:id="@+id/lin_home"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:onClick="@{handler::home}"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/icon_home"
+                    android:layout_width="50dp"
+                    android:layout_height="40dp"
+
+                    android:src="@drawable/new_home_active" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/home"
+                    android:id="@+id/txtHome"
+                    android:textColor="#E8343D"
+                    android:textAlignment="center"
+                    android:textSize="10dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lin_reser"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/icon_reser"
+                    android:layout_width="50dp"
+                    android:layout_height="40dp"
+                    android:scaleType="centerCrop"
+                    android:onClick="@{handler::reservations}"
+                    android:src="@drawable/noun_reservation" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/reservations"
+                    android:id="@+id/txtReservations"
+                    android:textColor="#C6B8A4"
+                    android:textAlignment="center"
+
+                    android:textSize="10dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lin_offers"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/icon_offers"
+                    android:layout_width="50dp"
+                    android:scaleType="centerCrop"
+                    android:layout_height="40dp"
+                    android:onClick="@{handler::offers}"
+                    android:src="@drawable/noun_offer" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/offers"
+                    android:id="@+id/txtOffers"
+                    android:textColor="#C6B8A4"
+                    android:textAlignment="center"
+                    android:textSize="10dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lin_fav"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/icon_fav"
+                    android:layout_width="50dp"
+                    android:scaleType="centerCrop"
+                    android:layout_height="40dp"
+                    android:onClick="@{handler::favorites}"
+                    android:src="@drawable/noun_heart" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/favorites"
+                    android:id="@+id/txtFavorites"
+                    android:textAlignment="center"
+                    android:textColor="#C6B8A4"
+                    android:textSize="10dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lin_more"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/icon_more"
+                    android:layout_width="60dp"
+                    android:layout_height="40dp"
+                    android:scaleType="centerCrop"
+                    android:onClick="@{handler::more}"
+                    android:src="@drawable/noun_more" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/more"
+                    android:id="@+id/txtMore"
+                    android:textColor="#C6B8A4"
+                    android:textAlignment="center"
+                    android:textSize="10dp" />
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+</layout>

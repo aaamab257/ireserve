@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="handler"
+            type="com.aaamab.bonappetit.ui.resCurbside.ResCurbsideScreen.ResCurbsideHandler" />
+    </data>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#FFFFFF">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rec_DineIn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp" />
+            <RelativeLayout
+                android:id="@+id/bottom"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_alignParentBottom="true"
+                android:background="@drawable/bottom_sheet_btn"
+                android:onClick="@{handler::toggleBottomSheet}">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:src="@drawable/ic_baseline_keyboard_arrow_up_24" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="15dp"
+                    android:fontFamily="@font/hn_bold"
+                    android:text="@string/upcoming"
+                    android:textColor="#E8343D"
+                    android:textSize="16dp"
+                    android:visibility="visible" />
+            </RelativeLayout>
+            <androidx.coordinatorlayout.widget.CoordinatorLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentBottom="true"
+                >
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layoutBottomSheet"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    app:behavior_hideable="true"
+                    android:layout_alignParentBottom="true"
+                    app:behavior_peekHeight="0dp"
+                    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
+                    tools:ignore="MissingConstraints">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/ed_footerSheet"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp">
+
+                        <RelativeLayout
+                            android:id="@+id/bottomS"
+                            android:layout_width="match_parent"
+                            android:layout_height="200dp"
+                            android:background="@drawable/bottom_sheet_btn">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerHorizontal="true"
+                                android:src="@drawable/ic_baseline_keyboard_arrow_up_24" />
+
+                            <TextView
+                                android:id="@+id/txtUp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:layout_marginStart="15dp"
+                                android:layout_marginTop="15dp"
+                                android:fontFamily="@font/hn_bold"
+                                android:text="@string/upcoming"
+                                android:textColor="#E8343D"
+                                android:textSize="16dp" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/txtUp"
+                                android:layout_marginStart="15dp"
+                                android:layout_marginTop="15dp"
+                                android:id="@+id/upcomingTxt"
+                                android:visibility="gone"
+                                android:fontFamily="@font/hn_bold"
+                                android:text="@string/you_have_no_reservation_yet"
+                                android:textColor="#000"
+                                android:textSize="16dp" />
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/recUp"
+                                android:layout_below="@id/txtUp"
+                                />
+                        </RelativeLayout>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.coordinatorlayout.widget.CoordinatorLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+
+</layout>

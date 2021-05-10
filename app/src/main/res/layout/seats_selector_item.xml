@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="50dp"
+    android:layout_height="50dp"
+    android:id="@+id/rel_selector"
+    android:layout_margin="2dp"
+    android:background="@drawable/rounded_style"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:id="@+id/txt_Num"
+        android:layout_centerInParent="true"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        />
+</RelativeLayout>
