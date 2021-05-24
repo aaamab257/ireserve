@@ -138,6 +138,7 @@
     <string name="pic_pager">طلب خارجي</string>
     <string name="menu_pager">الطعام</string>
     <string name="reviews_pager">التقييمات</string>
+    <string name="about_pager">عن المطعم</string>
     <string name="contact_to_cancel">يرجى الاتصال بالمطعم لإلغاء الحجز الخاص بك</string>
     <string name="contact_to_edit">يرجى الاتصال بالمطعم لتعديل حجزك</string>
     <string name="per_text">عذرا ، يجب أن تسمح بهذا الإذن للاتصال بالمطعم</string>

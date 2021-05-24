@@ -46,8 +46,13 @@ import com.aaamab.bonappetit.utils.ToastUtil;
 import com.aaamab.bonappetit.utils.dialogs.DialogUtil;
 import com.aaamab.bonappetit.utils.dialogs.DialogUtilResponse;
 import com.aaamab.bonappetit.utils.network.MainApiBody;
+import com.github.florent37.singledateandtimepicker.SingleDateAndTimePicker;
+import com.github.florent37.singledateandtimepicker.dialog.SingleDateAndTimePickerDialog;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import okhttp3.RequestBody;
 
@@ -201,7 +206,7 @@ public class PickupScreen extends AppCompatActivity implements MenuInter, MyOrde
         }else {
             type = "P";
         }
-        adapterMenu = new NewMenuAdapter(this, data, type);
+        adapterMenu = new NewMenuAdapter(this, data, type , 0);
         binding.recPickup.setLayoutManager(new LinearLayoutManager(this));
         binding.recPickup.setAdapter(adapterMenu);
     }
@@ -314,6 +319,7 @@ public class PickupScreen extends AppCompatActivity implements MenuInter, MyOrde
         dialogBuilder.setView(dialogView);
         final AlertDialog alertDialog = dialogBuilder.create();
         Button confirm = dialogView.findViewById(R.id.btn_confirm);
+        final SingleDateAndTimePicker picker = dialogView.findViewById(R.id.single_day_picker);
 
 
 
@@ -321,9 +327,13 @@ public class PickupScreen extends AppCompatActivity implements MenuInter, MyOrde
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Date date = picker.getDate();
+                DateFormat timeFormat = new SimpleDateFormat("hh:mm");
+                String timeForm = timeFormat.format(date);
                 Bundle b = new Bundle();
                 b.putString("type", "P");
                 b.putInt("resId", ResID);
+                b.putString("time" , timeForm);
                 IntentUtilies.openActivityWithBundle(PickupScreen.this, MyOrderScreen.class, b);
                 alertDialog.dismiss();
             }

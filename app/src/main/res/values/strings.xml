@@ -139,6 +139,7 @@
     <string name="pic_pager">Pickup</string>
     <string name="menu_pager">Menu</string>
     <string name="reviews_pager">Reviews</string>
+    <string name="about_pager">About Us</string>
     <string name="contact_to_cancel">Please contact the restaurant to Cancel your reservation</string>
     <string name="contact_to_edit">Please contact the restaurant to Edit your reservation</string>
     <string name="per_text">Sorry , you must allow this permission to call the restaurant</string>

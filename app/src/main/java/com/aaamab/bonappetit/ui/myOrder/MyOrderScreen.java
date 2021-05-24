@@ -1,12 +1,16 @@
 package com.aaamab.bonappetit.ui.myOrder;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.content.Context;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 
 import com.aaamab.bonappetit.R;
 import com.aaamab.bonappetit.data.ChangePass;
@@ -25,11 +29,17 @@ import com.aaamab.bonappetit.ui.main.MainScreen;
 import com.aaamab.bonappetit.ui.menus.MenuInter;
 import com.aaamab.bonappetit.ui.menus.MenuPresenter;
 import com.aaamab.bonappetit.ui.paymentMethod.PaymentMethodScreen;
+import com.aaamab.bonappetit.ui.pickup.PickupScreen;
 import com.aaamab.bonappetit.utils.CustomDialog;
 import com.aaamab.bonappetit.utils.IntentUtilies;
 import com.aaamab.bonappetit.utils.LocaleManager;
 import com.aaamab.bonappetit.utils.ToastUtil;
 import com.aaamab.bonappetit.utils.network.MainApiBody;
+import com.github.florent37.singledateandtimepicker.SingleDateAndTimePicker;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import okhttp3.RequestBody;
 
@@ -44,6 +54,7 @@ public class MyOrderScreen extends AppCompatActivity implements MenuInter, MyOrd
     String type = "";
     int Res = 0 ;
     public boolean isFood = true ;
+    String time = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,6 +70,7 @@ public class MyOrderScreen extends AppCompatActivity implements MenuInter, MyOrd
         Bundle getB = getIntent().getExtras();
         type = getB.getString("type");
         Res = getB.getInt("resId" , 0);
+        time = getB .getString("time");
         RequestBody body = null ;
         try {
             body = MainApiBody.myOrderBody(type ,Res);
@@ -142,10 +154,20 @@ public class MyOrderScreen extends AppCompatActivity implements MenuInter, MyOrd
             if(isFood){
                 if(adapter.getItemCount() > 0){
                    // dialog.showDialog();
-                    Bundle b = new Bundle();
+                    /*Bundle b = new Bundle();
                     b.putString("type" , type);
                     b.putInt("resId" , Res);
-                    IntentUtilies.openActivityWithBundle(MyOrderScreen.this, PaymentMethodScreen.class,b);
+                    b.putString("time" , time);
+                    IntentUtilies.openActivityWithBundle(MyOrderScreen.this, PaymentMethodScreen.class,b);*/
+                    if (type.equals("D")){
+                        Bundle b = new Bundle();
+                        b.putString("type" , type);
+                        b.putInt("resId" , Res);
+                        b.putString("time" , time);
+                        IntentUtilies.openActivityWithBundle(MyOrderScreen.this, PaymentMethodScreen.class,b);
+                    }else {
+                        openTimeDialog();
+                    }
                 }else {
                     dialog.dismissDialog();
                     ToastUtil.showErrorToast(MyOrderScreen.this, R.string.no_food_add);
@@ -176,5 +198,49 @@ public class MyOrderScreen extends AppCompatActivity implements MenuInter, MyOrd
             }
 
         }
+    }
+
+    private void openTimeDialog() {
+        final AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
+        LayoutInflater inflater = this.getLayoutInflater();
+        final View dialogView = inflater.inflate(R.layout.time_dialog, null);
+        dialogBuilder.setView(dialogView);
+        final AlertDialog alertDialog = dialogBuilder.create();
+        Button confirm = dialogView.findViewById(R.id.btn_confirm); //btn_Skip
+        Button skip = dialogView.findViewById(R.id.btn_Skip); //btn_Skip
+        final SingleDateAndTimePicker picker = dialogView.findViewById(R.id.single_day_picker);
+        skip.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Date date = picker.getDate();
+                DateFormat timeFormat = new SimpleDateFormat("hh:mm");
+                String timeForm = timeFormat.format(date);
+                Bundle b = new Bundle();
+                b.putString("type", type);
+                b.putInt("resId", Res);
+                b.putString("time" , timeForm);
+                IntentUtilies.openActivityWithBundle(MyOrderScreen.this, PaymentMethodScreen.class, b);
+                alertDialog.dismiss();
+            }
+        });
+
+
+
+        confirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Date date = picker.getDate();
+                DateFormat timeFormat = new SimpleDateFormat("hh:mm");
+                String timeForm = timeFormat.format(date);
+                Bundle b = new Bundle();
+                b.putString("type", type);
+                b.putInt("resId", Res);
+                b.putString("time" , timeForm);
+                IntentUtilies.openActivityWithBundle(MyOrderScreen.this, PaymentMethodScreen.class, b);
+                alertDialog.dismiss();
+            }
+        });
+        alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+        alertDialog.show();
     }
 }

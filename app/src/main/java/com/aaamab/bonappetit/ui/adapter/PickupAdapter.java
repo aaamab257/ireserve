@@ -47,12 +47,14 @@ public class PickupAdapter extends RecyclerView.Adapter<PickupAdapter.MyViewHold
     FoodData data;
     Context context;
     String type;
+    int pos ;
     ArrayList<FoodsItem> menuData ;
 
-    public PickupAdapter(Context context, FoodData data, String type ,ArrayList<FoodsItem> menuData) {
+    public PickupAdapter(Context context, FoodData data, String type ,ArrayList<FoodsItem> menuData , int pos) {
         this.mInflater = LayoutInflater.from(context);
         this.type = type;
         this.context = context;
+        this.pos = pos;
         this.data = data;
         this.menuData = menuData;
     }
@@ -66,6 +68,11 @@ public class PickupAdapter extends RecyclerView.Adapter<PickupAdapter.MyViewHold
 
     @Override
     public void onBindViewHolder(@NonNull final PickupAdapter.MyViewHolder holder, final int position) {
+        if (pos == 1){
+            holder.add.setVisibility(View.GONE);
+            holder.remove.setVisibility(View.GONE);
+            holder.quan.setVisibility(View.GONE);
+        }
         holder.orderDetails.setText(menuData.get(position).getDescription());
         holder.name.setText(menuData.get(position).getName());
         if (menuData.get(position).getIs_offer().equals("0")) {

@@ -175,6 +175,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@+id/top_field"
+            android:id="@+id/rel_selector"
             >
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tab_layout"
@@ -191,8 +192,38 @@
             <androidx.viewpager.widget.ViewPager
                 android:id="@+id/pager"
                 android:layout_width="match_parent"
-                android:layout_height="800dp"
+                android:layout_above="@+id/btuns"
+                android:layout_height="wrap_content"
                 android:layout_below="@id/tab_layout" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/btuns"
+                android:background="#00ffffff"
+                android:visibility="visible"
+                android:layout_alignParentBottom="true"
+                android:gravity="center"
+                android:layout_centerInParent="true"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal"
+                >
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:id="@+id/btnC"
+                    android:textSize="16dp"
+                    android:layout_margin="5dp"
+                    android:textStyle="bold"
+                    android:background="@drawable/btns_style"
+                    android:text=""
+                    android:onClick="@{handler::onButtonClick}"
+                    android:textAllCaps="false"
+                    android:textColor="#FFFFFF" />
+
+
+            </LinearLayout>
         </RelativeLayout>
+
     </RelativeLayout>
 </layout>

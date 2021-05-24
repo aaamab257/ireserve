@@ -81,10 +81,10 @@ public class MenuPresenter {
         }
     }
 
-    public void applyOrder(final Context context , int resID , String type , final String pay ){
+    public void applyOrder(final Context context , int resID , String type , final String pay , String time ){
         RequestBody body  = null ;
         try {
-            body = MainApiBody.applyOrder(resID ,type , pay);
+            body = MainApiBody.applyOrder(resID ,type , pay  ,time);
         }catch (Exception e){
 
         }

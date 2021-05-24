@@ -39,6 +39,11 @@ import com.aaamab.bonappetit.utils.LocaleManager;
 import com.aaamab.bonappetit.utils.StaticMethods;
 import com.aaamab.bonappetit.utils.ToastUtil;
 import com.aaamab.bonappetit.utils.network.MainApiBody;
+import com.github.florent37.singledateandtimepicker.SingleDateAndTimePicker;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import okhttp3.RequestBody;
 
@@ -129,7 +134,7 @@ public class CurbsideScreen extends AppCompatActivity implements MenuInter, MyOr
     public void onMenuFood(RestMenu data) {
        /* ResID = data.data.getFa().get(0).getRestaurant_id() ;*/
         type = "C" ;
-        adapterMenu = new NewMenuAdapter(this,data,"C");
+        adapterMenu = new NewMenuAdapter(this,data,"C" , 0);
         binding.recCurbside.setLayoutManager(new LinearLayoutManager(this));
         binding.recCurbside.setAdapter(adapterMenu);
     }
@@ -168,16 +173,20 @@ public class CurbsideScreen extends AppCompatActivity implements MenuInter, MyOr
         dialogBuilder.setView(dialogView);
         final AlertDialog alertDialog = dialogBuilder.create();
         Button confirm = dialogView.findViewById(R.id.btn_confirm);
-
+        final SingleDateAndTimePicker picker = dialogView.findViewById(R.id.single_day_picker);
 
 
 
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Date date = picker.getDate();
+                DateFormat timeFormat = new SimpleDateFormat("hh:mm");
+                String timeForm = timeFormat.format(date);
                 Bundle b = new Bundle();
                 b.putString("type", "C");
                 b.putInt("resId" , StaticMethods.resID);
+                b.putString("time" , timeForm);
                 IntentUtilies.openActivityWithBundle(CurbsideScreen.this, MyOrderScreen.class, b);
                 alertDialog.dismiss();
             }

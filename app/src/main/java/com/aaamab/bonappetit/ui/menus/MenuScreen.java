@@ -23,6 +23,7 @@ import com.aaamab.bonappetit.data.RestMenu;
 import com.aaamab.bonappetit.data.RestruantByID;
 import com.aaamab.bonappetit.databinding.FragmentMenuScreenBinding;
 import com.aaamab.bonappetit.ui.adapter.MenuAdapter;
+import com.aaamab.bonappetit.ui.adapter.NewMenuAdapter;
 import com.aaamab.bonappetit.ui.imageDisplay.ImageDisplay;
 import com.aaamab.bonappetit.ui.main.MainScreen;
 import com.aaamab.bonappetit.ui.pickup.PickupScreen;
@@ -55,7 +56,7 @@ public class MenuScreen extends Fragment implements MenuInter, OnMapReadyCallbac
     MapView mapView;
     RestruantByID restruantByID;
     String name = " ";
-
+    NewMenuAdapter adapterMenu;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -66,6 +67,7 @@ public class MenuScreen extends Fragment implements MenuInter, OnMapReadyCallbac
         binding.setHandler(handler);
         presenter = new MenuPresenter(this);
         dialog = new CustomDialog(getActivity());
+        ((RestaurantDetails)getActivity()).goneButtons(false);
         //dialog.showDialog();
         switch (StaticMethods.type) {
 
@@ -92,7 +94,7 @@ public class MenuScreen extends Fragment implements MenuInter, OnMapReadyCallbac
         }
         presenter.getDetails(getActivity(), StaticMethods.resID);
         presenter.getMenu(getActivity(), StaticMethods.resID);
-
+        presenter.getMenuData(getActivity() , StaticMethods.resID);
 
         return v;
     }
@@ -144,13 +146,22 @@ public class MenuScreen extends Fragment implements MenuInter, OnMapReadyCallbac
     @Override
     public void onFood(FoodData data) {
 
-        adapter = new MenuAdapter(getActivity(), data, this);
+        /*adapter = new MenuAdapter(getActivity(), data, this);
         binding.recFoods.setLayoutManager(new LinearLayoutManager(getActivity()));
-        binding.recFoods.setAdapter(adapter);
+        binding.recFoods.setAdapter(adapter);*/
     }
 
     @Override
     public void onMenuFood(RestMenu data) {
+        if (StaticMethods.type.equals("D")){
+            adapterMenu = new NewMenuAdapter(getActivity(), data, StaticMethods.type , 1);
+            binding.recFoods.setLayoutManager(new LinearLayoutManager(getActivity()));
+            binding.recFoods.setAdapter(adapterMenu);
+        }else {
+            adapterMenu = new NewMenuAdapter(getActivity(), data, StaticMethods.type , 0);
+            binding.recFoods.setLayoutManager(new LinearLayoutManager(getActivity()));
+            binding.recFoods.setAdapter(adapterMenu);
+        }
 
     }
 

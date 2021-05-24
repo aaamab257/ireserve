@@ -24,13 +24,15 @@ public class NewMenuAdapter extends RecyclerView.Adapter<NewMenuAdapter.MyViewHo
     RestMenu restMenu ;
     private LayoutInflater mInflater;
     PickupAdapter adapter ;
+    int pos ;
     String type ;
-    public NewMenuAdapter(Context context, RestMenu restMenu , String type ) {
+    public NewMenuAdapter(Context context, RestMenu restMenu , String type , int pos ) {
         Log.e(TAG, "NewMenuAdapter: "+restMenu.getData().size() );
         this.context = context;
         this.mInflater = LayoutInflater.from(context);
         this.restMenu = restMenu;
         this.type = type;
+        this.pos = pos;
     }
 
     @NonNull
@@ -46,7 +48,8 @@ public class NewMenuAdapter extends RecyclerView.Adapter<NewMenuAdapter.MyViewHo
         if (restMenu.getData().get(position).getFoods().size() == 0){
             holder.name.setVisibility(View.GONE);
         }else {
-            adapter = new PickupAdapter(context,null,type,restMenu.data.get(position).getFoods());
+
+            adapter = new PickupAdapter(context,null,type,restMenu.data.get(position).getFoods() , pos);
             holder.recFoods.setLayoutManager(new LinearLayoutManager(context));
             holder.recFoods.setAdapter(adapter);
         }

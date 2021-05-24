@@ -10,6 +10,7 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import com.aaamab.bonappetit.R;
 import com.aaamab.bonappetit.ui.dinein.DineInScreen;
 import com.aaamab.bonappetit.ui.menus.MenuScreen;
+import com.aaamab.bonappetit.ui.resAbout.ResAboutScreen;
 import com.aaamab.bonappetit.ui.review.ReviewScreen;
 
 public class MenuAndReviewPagerAdapter extends FragmentPagerAdapter {
@@ -29,6 +30,9 @@ public class MenuAndReviewPagerAdapter extends FragmentPagerAdapter {
         else if (position == 1)
         {
             fragment = new ReviewScreen();
+        }else if (position == 2)
+        {
+            fragment = new ResAboutScreen();
         }
 
         return fragment;
@@ -36,7 +40,7 @@ public class MenuAndReviewPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return 2;
+        return 3;
     }
 
     @Override
@@ -49,6 +53,9 @@ public class MenuAndReviewPagerAdapter extends FragmentPagerAdapter {
         else if (position == 1)
         {
             title = context.getString(R.string.reviews_pager);
+        }else if (position == 2)
+        {
+            title = context.getString(R.string.about_pager);
         }
 
         return title;

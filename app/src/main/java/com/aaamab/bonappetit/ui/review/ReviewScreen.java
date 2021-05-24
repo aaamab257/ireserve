@@ -19,6 +19,7 @@ import com.aaamab.bonappetit.data.MakeReview;
 import com.aaamab.bonappetit.data.RestruantByID;
 import com.aaamab.bonappetit.databinding.FragmentReviewScreendBinding;
 import com.aaamab.bonappetit.ui.adapter.ReviewsAdapter;
+import com.aaamab.bonappetit.ui.resDetails.RestaurantDetails;
 import com.aaamab.bonappetit.utils.CustomDialog;
 import com.aaamab.bonappetit.utils.StaticMethods;
 import com.aaamab.bonappetit.utils.ToastUtil;
@@ -45,6 +46,7 @@ public class ReviewScreen extends Fragment implements ReviewsInter {
         presenter = new ReviewsPresenter(this);
         dialog = new CustomDialog(getActivity());
         //dialog.showDialog();
+        ((RestaurantDetails)getActivity()).goneButtons(true);
         presenter.getDetails(getActivity(), StaticMethods.resID);
         binding.editTextTextPersonName.addTextChangedListener(mTextEditorWatcher);
         return v;

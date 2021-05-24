@@ -41,7 +41,7 @@ import okhttp3.RequestBody;
 public class PaymentMethodScreen extends AppCompatActivity implements MenuInter , InterfaceDineIn ,PaymentSummary {
     PaymentHandler handler ;
     ActivityPaymentMethodScreenBinding binding ;
-    String pay = ""  , type = "";
+    String pay = "" ,time = "" , type = "";
     MenuPresenter menuPresenter;
     PresenterDineIn dineIn , dine;
     int Res = 0 ;
@@ -57,7 +57,7 @@ public class PaymentMethodScreen extends AppCompatActivity implements MenuInter 
         Bundle getB = getIntent().getExtras();
         type = getB.getString("type");
         Res = getB.getInt("resId" , 0);
-
+        time = getB.getString("time");
         RequestBody body = null ;
         try {
             body = MainApiBody.getPaymentSummary(Res,type,"");
@@ -181,7 +181,7 @@ public class PaymentMethodScreen extends AppCompatActivity implements MenuInter 
                     Log.e("TAG", "onProcess: id "+Res );
                     Log.e("TAG", "onProcess: type "+type );
                     Log.e("TAG", "onProcess: pay "+pay );
-                    menuPresenter.applyOrder(PaymentMethodScreen.this, Res, type , pay);
+                    menuPresenter.applyOrder(PaymentMethodScreen.this, Res, type , pay ,time );
                 }
             }else if (type.equals("C")){
                 if (pay.isEmpty()){
@@ -191,7 +191,7 @@ public class PaymentMethodScreen extends AppCompatActivity implements MenuInter 
                     Log.e("TAG", "onProcess: id "+Res );
                     Log.e("TAG", "onProcess: type "+type );
                     Log.e("TAG", "onProcess: pay "+pay );
-                    menuPresenter.applyOrder(PaymentMethodScreen.this, Res, type , pay);
+                    menuPresenter.applyOrder(PaymentMethodScreen.this, Res, type , pay,time);
                 }
             }
 

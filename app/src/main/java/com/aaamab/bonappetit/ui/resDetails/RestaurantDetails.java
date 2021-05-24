@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.LinearSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.SnapHelper;
+import androidx.viewpager.widget.ViewPager;
 
 import android.app.Activity;
 import android.content.Context;
@@ -25,10 +26,12 @@ import com.aaamab.bonappetit.ui.adapter.viewPagerAdapters.MenuAndReviewPagerAdap
 import com.aaamab.bonappetit.ui.cubside.CurbsideScreen;
 import com.aaamab.bonappetit.ui.dineinOrder.DineInOrderScreen;
 import com.aaamab.bonappetit.ui.main.MainScreen;
+import com.aaamab.bonappetit.ui.myOrder.MyOrderScreen;
 import com.aaamab.bonappetit.ui.pickup.PickupScreen;
 import com.aaamab.bonappetit.utils.CustomDialog;
 import com.aaamab.bonappetit.utils.IntentUtilies;
 import com.aaamab.bonappetit.utils.LocaleManager;
+import com.aaamab.bonappetit.utils.StaticMethods;
 import com.aaamab.bonappetit.utils.ToastUtil;
 import com.squareup.picasso.Picasso;
 
@@ -55,12 +58,21 @@ public class RestaurantDetails extends AppCompatActivity implements ResByIdInter
         presenter = new ResPresenter(this);
 
         Bundle b = getIntent().getExtras();
-
+        if (StaticMethods.type.equals("D")){
+            binding.btnC.setText(getString(R.string.reserve));
+        }else if (StaticMethods.type.equals("P")){
+            binding.btnC.setText(getString(R.string.apply));
+        }else  if (StaticMethods.type.equals("C")) {
+            binding.btnC.setText(getString(R.string.apply));
+        }else {
+            binding.btnC.setVisibility(View.GONE);
+        }
         try {
             index = b.getInt("id");
         }catch (Exception e){
 
         }
+
         //dialog.showDialog();
         presenter.getDetails(this ,index);
         configTabs();
@@ -69,8 +81,33 @@ public class RestaurantDetails extends AppCompatActivity implements ResByIdInter
         andReviewPagerAdapter = new MenuAndReviewPagerAdapter(getSupportFragmentManager(), this);
         binding.tabLayout.setupWithViewPager(binding.pager);
         binding.pager.setAdapter(andReviewPagerAdapter);
-    }
+        binding.pager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            public void onPageScrollStateChanged(int state) {
+            }
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                if (position == 0){
+                    binding.btuns.setVisibility(View.VISIBLE);
+                }else if (position == 1){
+                    binding.btuns.setVisibility(View.GONE);
+                }else {
+                    binding.btuns.setVisibility(View.GONE);
+                }
+            }
 
+            public void onPageSelected(int position) {
+                if (position == 0){
+                    binding.btuns.setVisibility(View.VISIBLE);
+                }else if (position == 1){
+                    binding.btuns.setVisibility(View.GONE);
+                }else {
+                    binding.btuns.setVisibility(View.GONE);
+                }
+            }
+        });
+    }
+    public void goneButtons(boolean isGone){
+
+    }
     @Override
     public void onSuccess(RestruantByID restruant) {
         dialog.dismissDialog();
@@ -155,6 +192,25 @@ public class RestaurantDetails extends AppCompatActivity implements ResByIdInter
                 presenter.makeFav(RestaurantDetails.this , index);
             }
 
+        }
+
+        public void onButtonClick(View v){
+            if (StaticMethods.type.equals("D")){
+                Bundle bundle = new Bundle();
+                bundle.putString("name" ,name);
+                bundle.putString("image" , image);
+                IntentUtilies.openActivityWithBundle(RestaurantDetails.this, DineInOrderScreen.class , bundle);
+            }else if (StaticMethods.type.equals("P")){
+                Bundle b = new Bundle();
+                b.putString("type", "P");
+                b.putInt("resId" , StaticMethods.resID);
+                IntentUtilies.openActivityWithBundle(RestaurantDetails.this, MyOrderScreen.class, b);
+            }else  if (StaticMethods.type.equals("C")) {
+                Bundle b = new Bundle();
+                b.putString("type", "C");
+                b.putInt("resId" , StaticMethods.resID);
+                IntentUtilies.openActivityWithBundle(RestaurantDetails.this, MyOrderScreen.class, b);
+            }
         }
 
     }

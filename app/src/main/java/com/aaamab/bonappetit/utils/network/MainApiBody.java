@@ -121,11 +121,12 @@ public class MainApiBody {
         return requestBody(params);
     }
 
-    public static RequestBody applyOrder(int rest_id, String type, String payment) throws JSONException {
+    public static RequestBody applyOrder(int rest_id, String type, String payment , String time) throws JSONException {
         JSONObject params = new JSONObject();
         params.put("rest_id", rest_id);
         params.put("type", type);
         params.put("payment_method", payment);
+        params.put("Time_curibside_pickup", time);
         //payment_method
         return requestBody(params);
     }
