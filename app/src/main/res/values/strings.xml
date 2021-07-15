@@ -172,5 +172,7 @@
     <string name="seat_type">Seating Type</string>
     <string name="select_the_time">Select the time of the order</string>
     <string name="confirm">Confirm</string>
+    <string name="continue_as_guest">Continue as guest</string>
+    <string name="get_started">Get Started</string>
     <!-- TODO: Remove or change this placeholder text -->
 </resources>

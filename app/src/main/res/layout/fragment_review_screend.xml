@@ -33,100 +33,107 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/textView10"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:textSize="14dp"
-                    android:text="@string/write_your_review"
-                    android:textColor="#F32929"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.093"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/recReviews" />
-
-                <EditText
-                    android:id="@+id/editTextTextPersonName"
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginTop="14dp"
-                    android:layout_marginEnd="30dp"
-                    android:background="@drawable/ed_review_style"
-                    android:ems="10"
-                    android:gravity="top|start"
-                    android:inputType="textPersonName"
-                    android:paddingStart="8dp"
-                    android:paddingTop="8dp"
-                    android:paddingEnd="8dp"
-                    android:textSize="14dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/ratingBar2" />
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/conRev"
+                    app:layout_constraintTop_toBottomOf="@+id/recReviews">
 
-                    android:layout_marginTop="84dp"
-                    app:cardBackgroundColor="#FFFFFF"
-                    app:cardCornerRadius="3dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.13"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/editTextTextPersonName">
+                    <TextView
+                        android:id="@+id/textView10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:text="@string/write_your_review"
+                        android:textColor="#F32929"
+                        android:textSize="14dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.093"
 
-                    <RelativeLayout
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <EditText
+                        android:id="@+id/editTextTextPersonName"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:padding="5dp">
+                        android:layout_height="100dp"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginTop="14dp"
+                        android:layout_marginEnd="30dp"
+                        android:background="@drawable/ed_review_style"
+                        android:ems="10"
+                        android:gravity="top|start"
+                        android:inputType="textPersonName"
+                        android:paddingStart="8dp"
+                        android:paddingTop="8dp"
+                        android:paddingEnd="8dp"
+                        android:textSize="14dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/ratingBar2" />
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerInParent="true"
-                            android:text="0/250"
-                            android:textSize="14dp"
-                            android:id="@+id/txtCounter"
-                            />
-                    </RelativeLayout>
-                </androidx.cardview.widget.CardView>
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
 
-                <Button
-                    android:id="@+id/btn_post"
-                    android:layout_width="150dp"
-                    android:layout_height="45dp"
-                    android:layout_alignParentBottom="true"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="36dp"
-                    android:background="@drawable/btns_style"
-                    android:text="@string/post_review"
-                    android:textAllCaps="false"
-                    android:onClick="@{handler::onPost}"
-                    android:layout_marginBottom="15dp"
-                    android:textColor="#FFFFFF"
-                    android:textSize="16dp"
-                    android:fontFamily="@font/hn_bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.498"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName"
-                    app:layout_constraintVertical_bias="0.0" />
+                        android:layout_marginTop="84dp"
+                        app:cardBackgroundColor="#FFFFFF"
+                        app:cardCornerRadius="3dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.13"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/editTextTextPersonName">
 
-                <RatingBar
-                    android:id="@+id/ratingBar2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:theme="@style/RatingBar"
-                    app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.497"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView10" />
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:padding="5dp">
+
+                            <TextView
+                                android:id="@+id/txtCounter"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:text="0/250"
+                                android:textSize="14dp" />
+                        </RelativeLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <Button
+                        android:id="@+id/btn_post"
+                        android:layout_width="150dp"
+                        android:layout_height="45dp"
+                        android:layout_alignParentBottom="true"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="36dp"
+                        android:layout_marginBottom="15dp"
+                        android:background="@drawable/btns_style"
+                        android:fontFamily="@font/hn_bold"
+                        android:onClick="@{handler::onPost}"
+                        android:text="@string/post_review"
+                        android:textAllCaps="false"
+                        android:textColor="#FFFFFF"
+                        android:textSize="16dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.498"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName"
+                        app:layout_constraintVertical_bias="0.0" />
+
+                    <RatingBar
+                        android:id="@+id/ratingBar2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:theme="@style/RatingBar"
+                        app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.497"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </RelativeLayout>
     </androidx.core.widget.NestedScrollView>

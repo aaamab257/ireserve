@@ -170,5 +170,7 @@
     <string name="seat_type">نوع المقاعد</string>
     <string name="select_the_time">برجاء اختيار وقت الاستلام</string>
     <string name="confirm">تأكيد</string>
+    <string name="continue_as_guest">الأستمرار كزائر</string>
+    <string name="get_started">أبدأ</string>
     <!-- TODO: Remove or change this placeholder text -->
 </resources>

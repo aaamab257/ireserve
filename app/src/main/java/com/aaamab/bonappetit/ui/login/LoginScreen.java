@@ -65,6 +65,14 @@ public class LoginScreen extends AppCompatActivity implements LoginInter {
         ToastUtil.showErrorToast(this, R.string.noConnection);
     }
 
+    @Override
+    public void asGuest(LoginData guestData) {
+        StaticMethods.isGuest = 1 ;
+        StaticMethods.userData = guestData;
+        IntentUtilies.openActivity(LoginScreen.this, MainScreen.class);
+        finish();
+    }
+
     public class LoginHandler {
         Context context;
 
@@ -84,6 +92,9 @@ public class LoginScreen extends AppCompatActivity implements LoginInter {
 
         public void onForgetPass(View v) {
             IntentUtilies.openActivity(LoginScreen.this, ForgetPassword.class);
+        }
+        public void onGuest(View v){
+            presenter.asGuest(LoginScreen.this);
         }
     }
 }

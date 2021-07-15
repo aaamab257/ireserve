@@ -49,6 +49,9 @@ public class ReviewScreen extends Fragment implements ReviewsInter {
         ((RestaurantDetails)getActivity()).goneButtons(true);
         presenter.getDetails(getActivity(), StaticMethods.resID);
         binding.editTextTextPersonName.addTextChangedListener(mTextEditorWatcher);
+        if (StaticMethods.isGuest == 1){
+            binding.conRev.setVisibility(View.GONE);
+        }
         return v;
     }
     private final TextWatcher mTextEditorWatcher = new TextWatcher() {

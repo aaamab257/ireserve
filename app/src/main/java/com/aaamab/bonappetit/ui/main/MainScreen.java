@@ -185,7 +185,13 @@ public class MainScreen extends AppCompatActivity implements DineInHomeInter {
     }
 
     public void profile() {
-        IntentUtilies.openActivity(MainScreen.this, Profile.class);
+        if (StaticMethods.isGuest == 1) {
+            StaticMethods.ClearChash();
+            IntentUtilies.openActivityInNewStack(MainScreen.this, LoginScreen.class);
+        } else {
+            IntentUtilies.openActivity(MainScreen.this, Profile.class);
+        }
+
     } //openResultScreen
 
     public void openResultScreen() {
@@ -205,11 +211,21 @@ public class MainScreen extends AppCompatActivity implements DineInHomeInter {
     }
 
     public void contactUs() {
-        IntentUtilies.openActivity(MainScreen.this, ContactUsScreen.class);
+        if (StaticMethods.isGuest == 1) {
+            StaticMethods.ClearChash();
+            IntentUtilies.openActivityInNewStack(MainScreen.this, LoginScreen.class);
+        } else {
+            IntentUtilies.openActivity(MainScreen.this, ContactUsScreen.class);
+        }
     }
 
     public void notifications() {
-        IntentUtilies.openActivity(MainScreen.this, NotificationsScreen.class);
+        if (StaticMethods.isGuest == 1) {
+            StaticMethods.ClearChash();
+            IntentUtilies.openActivityInNewStack(MainScreen.this, LoginScreen.class);
+        } else {
+            IntentUtilies.openActivity(MainScreen.this, NotificationsScreen.class);
+        }
     }
 
     public void terms() {
@@ -221,7 +237,12 @@ public class MainScreen extends AppCompatActivity implements DineInHomeInter {
     }
 
     public void bookings() {
-        IntentUtilies.openActivity(MainScreen.this, BookingScreen.class);
+        if (StaticMethods.isGuest == 1) {
+            StaticMethods.ClearChash();
+            IntentUtilies.openActivityInNewStack(MainScreen.this, LoginScreen.class);
+        } else {
+            IntentUtilies.openActivity(MainScreen.this, BookingScreen.class);
+        }
     }
 
     public void onSignOut() {
@@ -231,10 +252,21 @@ public class MainScreen extends AppCompatActivity implements DineInHomeInter {
     }
 
     public void onMyOrders() {
-        IntentUtilies.openActivity(MainScreen.this, MyOrdersScreen.class);
+        if (StaticMethods.isGuest == 1) {
+            StaticMethods.ClearChash();
+            IntentUtilies.openActivityInNewStack(MainScreen.this, LoginScreen.class);
+        } else {
+            IntentUtilies.openActivity(MainScreen.this, MyOrdersScreen.class);
+        }
     }
-    public void myPay(){
-        IntentUtilies.openActivity(MainScreen.this, PaymentDetailsScreen.class);
+
+    public void myPay() {
+        if (StaticMethods.isGuest == 1) {
+            StaticMethods.ClearChash();
+            IntentUtilies.openActivityInNewStack(MainScreen.this, LoginScreen.class);
+        } else {
+            IntentUtilies.openActivity(MainScreen.this, PaymentDetailsScreen.class);
+        }
     }
 
     @Override
@@ -259,7 +291,7 @@ public class MainScreen extends AppCompatActivity implements DineInHomeInter {
 
     @Override
     public void isRated(boolean isRated) {
-        if (isRated){
+        if (isRated) {
             openResetPassDialog();
         }
     }
@@ -287,8 +319,13 @@ public class MainScreen extends AppCompatActivity implements DineInHomeInter {
         }
 
         public void favorites(View v) {
-            position = 3;
-            openView(position);
+            if (StaticMethods.isGuest == 1) {
+                StaticMethods.ClearChash();
+                IntentUtilies.openActivityInNewStack(MainScreen.this, LoginScreen.class);
+            } else {
+                position = 3;
+                openView(position);
+            }
         }
 
         public void more(View v) {
@@ -298,15 +335,30 @@ public class MainScreen extends AppCompatActivity implements DineInHomeInter {
     }
 
     public void openPickUp() {
-        IntentUtilies.openActivity(MainScreen.this, PickupScreen.class);
+        if (StaticMethods.isGuest == 1) {
+            StaticMethods.ClearChash();
+            IntentUtilies.openActivityInNewStack(MainScreen.this, LoginScreen.class);
+        } else {
+            IntentUtilies.openActivity(MainScreen.this, PickupScreen.class);
+        }
     }
 
     public void openCurbside() {
-        IntentUtilies.openActivity(MainScreen.this, CurbsideScreen.class);
+        if (StaticMethods.isGuest == 1) {
+            StaticMethods.ClearChash();
+            IntentUtilies.openActivityInNewStack(MainScreen.this, LoginScreen.class);
+        } else {
+            IntentUtilies.openActivity(MainScreen.this, CurbsideScreen.class);
+        }
     }
 
     public void openDineIn(Bundle bundle) {
-        IntentUtilies.openActivityWithBundle(MainScreen.this, DineInOrderScreen.class, bundle);
+        if (StaticMethods.isGuest == 1) {
+            StaticMethods.ClearChash();
+            IntentUtilies.openActivityInNewStack(MainScreen.this, LoginScreen.class);
+        } else {
+            IntentUtilies.openActivityWithBundle(MainScreen.this, DineInOrderScreen.class, bundle);
+        }
     }
 
     @Override
@@ -344,10 +396,10 @@ public class MainScreen extends AppCompatActivity implements DineInHomeInter {
         apply.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (rating == 0){
-                    presenter.rate(MainScreen.this , rating);
+                if (rating == 0) {
+                    presenter.rate(MainScreen.this, rating);
                     alertDialog.dismiss();
-                }else {
+                } else {
                     ToastUtil.showErrorToast(MainScreen.this, R.string.your_rate);
                 }
             }
@@ -365,16 +417,17 @@ public class MainScreen extends AppCompatActivity implements DineInHomeInter {
 
 
     // social media methods
-    public void social(String url){
+    public void social(String url) {
         Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
         startActivity(browserIntent);
     }
+
     @Override
     protected void attachBaseContext(Context base) {
         super.attachBaseContext(LocaleManager.onAttach(base));
     }
 
-    public void openSplash(){
+    public void openSplash() {
         IntentUtilies.openActivityInNewStack(this, SplashScreen.class);
 
     }

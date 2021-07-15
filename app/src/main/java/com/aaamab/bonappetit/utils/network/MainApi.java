@@ -116,7 +116,31 @@ public class MainApi {
                     }
                 });
     }
+    public static void ContinueAsGuest(RequestBody body,String lang, final ConnectionListener<DataObj<LoginData>> connectionListener) {
+        getApi().continueAsGuest(body , lang).subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<DataObj<LoginData>>() {
+                    @Override
+                    public void onError(Throwable e) {
+                        connectionListener.onFail(e);
+                    }
 
+                    @Override
+                    public void onComplete() {
+                    }
+
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                    }
+
+                    @Override
+                    public void onNext(DataObj<LoginData> userResponse) {
+                        ConnectionResponse<DataObj<LoginData>> response = new ConnectionResponse<>();
+                        response.data = userResponse;
+                        connectionListener.onSuccess(response);
+                    }
+                });
+    }
     public static void updateDate(String token, RequestBody body , String lang, final ConnectionListener<DataObj<LoginData>> connectionListener) {
         getApi().updateProfile(token, body , lang).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

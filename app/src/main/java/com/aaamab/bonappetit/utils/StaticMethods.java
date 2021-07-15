@@ -246,6 +246,7 @@ public class StaticMethods {
     public static String Time = "" ;
     public static String Count = "1" ;
     public static ArrayList<FoodsItem> getOrderFood  = null ;
+    public static int isGuest = 0 ;
     /*public static ArrayList<ImageUrl> images = null;
     public static TutorListArray tutors = null;
     public static boolean selected = false;
@@ -257,6 +258,7 @@ public class StaticMethods {
     public static void ClearChash() {
         StaticMethods.userData = null;
         StaticMethods.userRegisterResponse = null;
+        StaticMethods.isGuest = 0 ;
         //StaticMethods.userResponse =  null  ;
         /*StaticMethods.skillsResponse = null ;
         StaticMethods.categoryResponse = null ;*/

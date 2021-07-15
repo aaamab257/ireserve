@@ -108,6 +108,7 @@ public class MoreScreen extends Fragment implements MoreInterface , DialogUtilRe
         }
 
         public void profile(View v) {
+
             ((MainScreen)getActivity()).profile();
         }
 

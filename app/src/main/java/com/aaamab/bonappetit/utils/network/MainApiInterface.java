@@ -66,45 +66,48 @@ public interface MainApiInterface {
     @POST("login")
     Observable<DataObj<LoginData>> login(@Body RequestBody requestBody);
 
+    @POST("continue_as_guest")
+    Observable<DataObj<LoginData>> continueAsGuest(@Body RequestBody requestBody, @Header("lang") String lang);
+
     @POST("sign_up")
     Observable<DataObj<RegisterData>> register(@Body RequestBody requestBody);
 
 
     @GET("offers")
-    Observable<OffersData> offers(@Query("api_token") String api_token , @Header("lang") String lang);
+    Observable<OffersData> offers(@Query("api_token") String api_token, @Header("lang") String lang);
 
     @GET("favorits")
-    Observable<FavoritesData> favorites(@Query("api_token") String api_token , @Header("lang") String lang);
+    Observable<FavoritesData> favorites(@Query("api_token") String api_token, @Header("lang") String lang);
 
 
     @POST("rest_by_cat")
-    Observable<RestArray> getRes(@Query("api_token") String token,@Header("lang") String lang, @Body RequestBody body);
+    Observable<RestArray> getRes(@Query("api_token") String token, @Header("lang") String lang, @Body RequestBody body);
 
     @POST("get_food")
-    Observable<FoodData> getFoods(@Query("api_token") String token , @Header("lang") String lang, @Body RequestBody body);
+    Observable<FoodData> getFoods(@Query("api_token") String token, @Header("lang") String lang, @Body RequestBody body);
 
 
     @POST("add_food")
-    Observable<AddFoodArray> addFood(@Query("api_token") String token,@Header("lang") String lang, @Body RequestBody body );
+    Observable<AddFoodArray> addFood(@Query("api_token") String token, @Header("lang") String lang, @Body RequestBody body);
 
     @POST("add_food_check")
-    Observable<AddFoodCheck> addFoodCheck(@Query("api_token") String token , @Header("lang") String lang, @Body RequestBody body );
+    Observable<AddFoodCheck> addFoodCheck(@Query("api_token") String token, @Header("lang") String lang, @Body RequestBody body);
 
     @POST("remove_food")
-    Observable<RemoveFood<RemoveFoodOBJ>> removeFood(@Query("api_token") String token,@Header("lang") String lang, @Body RequestBody body);
+    Observable<RemoveFood<RemoveFoodOBJ>> removeFood(@Query("api_token") String token, @Header("lang") String lang, @Body RequestBody body);
 
     @POST("apply_order")
     Observable<RemoveFood<RemoveFoodOBJ>> applyOrder(@Query("api_token") String token, @Body RequestBody body, @Header("lang") String en);
 
 
     @POST("my_order")
-    Observable<MyOrdersArray> myOrder(@Query("api_token") String token , @Header("lang") String lang , @Body RequestBody body );
+    Observable<MyOrdersArray> myOrder(@Query("api_token") String token, @Header("lang") String lang, @Body RequestBody body);
 
     @GET("my_profile")
-    Observable<DataObj<ProfileData<ProfileDataPra>>> profile(@Query("api_token") String api_token , @Header("lang") String lang);
+    Observable<DataObj<ProfileData<ProfileDataPra>>> profile(@Query("api_token") String api_token, @Header("lang") String lang);
 
     @POST("order_delete_all")
-    Observable<DataObj<ChangePass>> deleteOrder(@Query("api_token") String api_token  , @Body RequestBody body );
+    Observable<DataObj<ChangePass>> deleteOrder(@Query("api_token") String api_token, @Body RequestBody body);
 
     //
     @POST("password/forgot")
@@ -112,7 +115,7 @@ public interface MainApiInterface {
 
     //
     @GET("support")
-    Observable<SupportArray> support(@Query("api_token") String api_token , @Header("lang") String lang , @Header("api_token") String token);
+    Observable<SupportArray> support(@Query("api_token") String api_token, @Header("lang") String lang, @Header("api_token") String token);
 
     //changePass
     @POST("changePass")
@@ -120,20 +123,20 @@ public interface MainApiInterface {
 
     //update_user_data
     @POST("update_user_data")
-    Observable<DataObj<LoginData>> updateProfile(@Query("api_token") String token, @Body RequestBody body , @Header("lang") String lang);
+    Observable<DataObj<LoginData>> updateProfile(@Query("api_token") String token, @Body RequestBody body, @Header("lang") String lang);
 
     //MAIN
 //rest_vip_by_cat
     @POST("rest_vip_by_cat")
-    Observable<RestArray> getResVIP(@Query("api_token") String token , @Header("lang") String lang, @Body RequestBody body);
+    Observable<RestArray> getResVIP(@Query("api_token") String token, @Header("lang") String lang, @Body RequestBody body);
 
     //
     @GET("about_us")
-    Observable<AboutArray> aboutUs(@Query("api_token") String token , @Header("lang") String lang);
+    Observable<AboutArray> aboutUs(@Query("api_token") String token, @Header("lang") String lang);
 
     //
     @GET("all_booking")
-    Observable<BookingArray> getBookings(@Query("api_token") String token , @Header("lang") String lang);
+    Observable<BookingArray> getBookings(@Query("api_token") String token, @Header("lang") String lang);
 
     @GET("terms")
     Observable<TermsArray> terms(@Header("lang") String lang);
@@ -144,11 +147,11 @@ public interface MainApiInterface {
 
     //all_orders
     @GET("all_orders")
-    Observable<AllMyOrders> getAllMyOrders(@Query("api_token") String token , @Header("lang") String lang);
+    Observable<AllMyOrders> getAllMyOrders(@Query("api_token") String token, @Header("lang") String lang);
 
     //Notifications
     @GET("notifications")
-    Observable<NotificationArray> getNotifications(@Query("api_token") String token , @Header("lang") String lang);
+    Observable<NotificationArray> getNotifications(@Query("api_token") String token, @Header("lang") String lang);
 
     @POST("view_notify")
     Observable<RestArray> viewNotifications(@Query("api_token") String token, @Body RequestBody body);
@@ -156,7 +159,7 @@ public interface MainApiInterface {
 
     //rest_by_id
     @POST("rest_by_id")
-    Observable<RestruantByID> resByID(@Query("api_token") String token, @Body RequestBody body , @Header("lang") String lang);
+    Observable<RestruantByID> resByID(@Query("api_token") String token, @Body RequestBody body, @Header("lang") String lang);
     //make_review
 
     @POST("make_review")
@@ -170,10 +173,10 @@ public interface MainApiInterface {
 
     //make_booking
     @POST("Dian_in")
-    Observable<NewMakeBook> make_bookingStatus(@Query("api_token") String token, @Body RequestBody body , @Header("lang") String en);
+    Observable<NewMakeBook> make_bookingStatus(@Query("api_token") String token, @Body RequestBody body, @Header("lang") String en);
 
     @POST("make_booking")
-    Observable<MakeBook> make_booking(@Query("api_token") String token, @Body RequestBody body , @Header("lang") String en);
+    Observable<MakeBook> make_booking(@Query("api_token") String token, @Body RequestBody body, @Header("lang") String en);
 
     //Re_order
     @POST("Re_order")
@@ -182,21 +185,21 @@ public interface MainApiInterface {
 
     //
     @GET("get_filter_data")
-    Observable<FilterData<FilterObj>> getFilter(@Query("api_token") String token , @Header("lang") String lang);
+    Observable<FilterData<FilterObj>> getFilter(@Query("api_token") String token, @Header("lang") String lang);
 
     //get_zone_data
     @FormUrlEncoded
     @POST("get_government_data")
-    Observable<AreaFilters> getAreaMall(@Query("api_token") String token , @Header("lang") String lang , @FieldMap Map<String,String> body);
+    Observable<AreaFilters> getAreaMall(@Query("api_token") String token, @Header("lang") String lang, @FieldMap Map<String, String> body);
 
     //get_area_data
     @FormUrlEncoded
     @POST("get_area_data")
-    Observable<AreaFilters> getMall(@Query("api_token") String token , @Header("lang") String lang , @FieldMap Map<String,String> body);
+    Observable<AreaFilters> getMall(@Query("api_token") String token, @Header("lang") String lang, @FieldMap Map<String, String> body);
 
     @FormUrlEncoded
     @POST("filter")
-    Observable<RestArray> postFilter(@Query("api_token") String token , @Header("lang") String lang ,@FieldMap Map<String,String> body );
+    Observable<RestArray> postFilter(@Query("api_token") String token, @Header("lang") String lang, @FieldMap Map<String, String> body);
 
     //filter_booking
 
@@ -218,29 +221,29 @@ public interface MainApiInterface {
 
 
     @POST("Seat_Type")
-    Observable<SeatingData> getSeating(@Query("api_token") String token, @Header("lang") String lang , @Body RequestBody bod );
+    Observable<SeatingData> getSeating(@Query("api_token") String token, @Header("lang") String lang, @Body RequestBody bod);
 
 
     @POST("review")
-    Observable<Rating> rateOnApply(@Query("api_token") String token, @Header("lang") String lang , @Body RequestBody bod );
+    Observable<Rating> rateOnApply(@Query("api_token") String token, @Header("lang") String lang, @Body RequestBody bod);
 
     //Seat_Type_without_rest_id
     @POST("Seat_Type_without_rest_id")
-    Observable<SeatingData> getSeatingWithoutId(@Query("api_token") String token, @Header("lang") String lang );
+    Observable<SeatingData> getSeatingWithoutId(@Query("api_token") String token, @Header("lang") String lang);
 
     //Payment_summary
     @POST("Payment_summary")
-    Observable<PaymentSummry> getPaySummary(@Query("api_token") String token, @Header("lang") String lang , @Body RequestBody body );
+    Observable<PaymentSummry> getPaySummary(@Query("api_token") String token, @Header("lang") String lang, @Body RequestBody body);
 
 
     //payment_Receipt
     @GET("payment_Receipt")
-    Observable<PaymentMoreData> getPayData(@Query("api_token") String token, @Header("lang") String lang );
+    Observable<PaymentMoreData> getPayData(@Query("api_token") String token, @Header("lang") String lang);
 
     //social media
     @GET("Social_Media_Links")
-    Observable<SocialMediaData> getSocial(@Query("api_token") String token ,@Header("lang") String lang);
+    Observable<SocialMediaData> getSocial(@Query("api_token") String token, @Header("lang") String lang);
 
     @POST("rest_menu")
-    Observable<RestMenu> getMenuRest(@Query("api_token") String token , @Header("lang") String lang , @Body RequestBody body);
+    Observable<RestMenu> getMenuRest(@Query("api_token") String token, @Header("lang") String lang, @Body RequestBody body);
 }

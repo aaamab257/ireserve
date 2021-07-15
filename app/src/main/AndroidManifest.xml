@@ -41,7 +41,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:supportsRtl">
-        <activity android:name=".ui.orderFoods.OrderFoodsScreen"></activity>
+        <activity android:name=".ui.welcome.WelcomeScreen">
+
+        </activity>
+        <activity android:name=".ui.orderFoods.OrderFoodsScreen" />
         <activity android:name=".ui.paymentOrderDetails.PaymentOrderDetails" />
         <activity android:name=".ui.paymentMore.PaymentDetailsScreen" />
         <activity android:name=".ui.paymentMethod.PaymentMethodScreen" />
